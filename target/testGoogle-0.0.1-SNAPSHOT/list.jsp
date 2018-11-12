@@ -7,7 +7,7 @@
 <title>Hello World</title>
 </head>
 <body>
-	added text
+	added text :P
 	${requestScope.list}
 </body>
 </html>

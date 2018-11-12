@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import sql.sqlDAO;
+import translate.translator;
 
 /**
  * Servlet implementation class mostrarTodo
@@ -35,16 +37,33 @@ public class mostrarTodo extends HttpServlet {
 		
 
     	sqlDAO	dao= sqlDAO.getDao();
+    	ArrayList <String> words_stored=null;
     	try {
     		dao.con = sqlDAO.createConnection();
     		
-    		request.setAttribute("list", dao.getAllWords());
+    		words_stored = dao.getAllWords();
     		
     	}
     	catch(Exception e) {
     		System.out.println("Error");
     		e.printStackTrace();
     	}
+    	
+    	ArrayList <String> words_translated=new ArrayList <String> ();
+
+    	for(String word: words_stored) {
+			try {
+				String w = translator.translate(word);
+	    		words_translated.add(w);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
+    		
+    
+    	request.setAttribute("list", words_stored );
+
     	
     	System.out.println(request.getAttribute("list"));
     	
