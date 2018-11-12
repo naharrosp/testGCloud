@@ -16,5 +16,6 @@ deploy_production:
   script:
     - echo $AUTH
     - echo $AUTH > /tmp/auth.json
+    - maven install
     - gcloud auth activate-service-account --key-file='/tmp/auth.json'
     - gcloud --quiet --project "comillas-221409" app deploy /builds/pablo627/testGCloud/WebContent/WEB-INF/appengine-web.xml
