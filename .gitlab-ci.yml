@@ -18,4 +18,4 @@ deploy_production:
     - echo $AUTH > /tmp/auth.json
     - mvn install
     - gcloud auth activate-service-account --key-file='/tmp/auth.json'
-    - gcloud --quiet --project "comillas-221409" app deploy /builds/pablo627/testGCloud/target/testGoogle-0.0.1-SNAPSHOT.war
+    - gcloud --quiet --project "comillas-221409" app deploy /builds/pablo627/testGCloud/WebContent/WEB-INF/appengine-web.xml
