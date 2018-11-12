@@ -7,6 +7,6 @@
 <title>G.Cloud</title>
 </head>
 <body>
-	Hello World!
+	Hello World! 2
 </body>
 </html>
