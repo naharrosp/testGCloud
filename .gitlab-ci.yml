@@ -15,5 +15,5 @@ deploy_production:
     - master
   script:
     - echo $1777202 > /tmp/auth.json
-    - gcloud auth activate-service-account --key-file='tmp/auth.json'
+    - gcloud auth activate-service-account --key-file='/tmp/auth.json'
     - gcloud --quiet --project $PROJECT_ID_PRODUCTION app deploy
