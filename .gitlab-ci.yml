@@ -17,4 +17,5 @@ deploy_production:
     - echo $AUTH
     - echo $AUTH > /tmp/auth.json
     - gcloud auth activate-service-account --key-file='/tmp/auth.json'
+    - mvn install
     - mvn appengine:deploy
