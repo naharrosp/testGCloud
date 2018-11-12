@@ -1,4 +1,4 @@
-image: java
+image: maven:latest
 
 before_script:
   - echo "deb http://packages.cloud.google.com/apt cloud-sdk-jessie main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list
@@ -16,6 +16,6 @@ deploy_production:
   script:
     - echo $AUTH
     - echo $AUTH > /tmp/auth.json
-    - maven install
+    - mvn install
     - gcloud auth activate-service-account --key-file='/tmp/auth.json'
     - gcloud --quiet --project "comillas-221409" app deploy /builds/pablo627/testGCloud/WebContent/WEB-INF/appengine-web.xml
