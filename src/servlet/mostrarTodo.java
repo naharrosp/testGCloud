@@ -52,7 +52,7 @@ public class mostrarTodo extends HttpServlet {
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			ExceptionUtil.report(e);
+			throw new ServletException(e);
 		}
 		
 		
@@ -72,7 +72,7 @@ public class mostrarTodo extends HttpServlet {
     	}
     	catch(Exception e) {
     		System.out.println("Error");
-			ExceptionUtil.report(e);
+			throw new ServletException(e);
     	}
     		
     
