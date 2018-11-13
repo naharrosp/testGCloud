@@ -40,14 +40,18 @@ public class mostrarTodo extends HttpServlet {
 		//Get the parameter
 		String text = request.getParameter("text");
 		
-		
+		ArrayList <String> words_stored=new ArrayList <String> ();
 		try {
 	    	//Translate the parameter
+			words_stored.add("0.1");
 			text = translator.translate(text);
 			//Analize the sentiment
+			words_stored.add("0.2");
 			Double score = SentimentAnalyzer.analyze(text);
 			//Concatenate
+			words_stored.add("0.3");
 			text = text + ": " + score.toString();
+			words_stored.add("0.4");
 
 
 		} catch (Exception e) {
@@ -58,13 +62,13 @@ public class mostrarTodo extends HttpServlet {
 		
     	//Database
     	sqlDAO	dao= sqlDAO.getDao();
-    	ArrayList <String> words_stored=new ArrayList <String> ();
+    	//ArrayList <String> words_stored=new ArrayList <String> ();
     	try {
     		words_stored.add("1");
     		dao.con = sqlDAO.createConnection();
     		//Store text
     		words_stored.add("2");
-    		dao.saveText("Hola");
+    		dao.saveText(text);
     		//Get words stored
     		words_stored.add("3");
     		words_stored = dao.getAllWords();
