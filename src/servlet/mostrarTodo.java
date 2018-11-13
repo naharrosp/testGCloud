@@ -62,7 +62,7 @@ public class mostrarTodo extends HttpServlet {
     	}
     		
     
-    	request.setAttribute("list",  words_stored );
+    	request.setAttribute("list",  words_translated );
 
     	
     	System.out.println(request.getAttribute("list"));
