@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import sentiments.SentimentAnalyzer;
 import sql.sqlDAO;
 import translate.translator;
+import util.ExceptionUtil;
 
 /**
  * Servlet implementation class mostrarTodo
@@ -51,7 +52,7 @@ public class mostrarTodo extends HttpServlet {
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			ExceptionUtil.report(e);
 		}
 		
 		
@@ -71,7 +72,7 @@ public class mostrarTodo extends HttpServlet {
     	}
     	catch(Exception e) {
     		System.out.println("Error");
-    		e.printStackTrace();
+			ExceptionUtil.report(e);
     	}
     		
     

@@ -1,5 +1,0 @@
-servlet/mostrarTodo.class
-sql/sqlDAO.class
-sql/cloudSql.class
-sentiments/SentimentAnalyzer.class
-translate/translator.class
