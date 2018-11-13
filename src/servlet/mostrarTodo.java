@@ -64,7 +64,7 @@ public class mostrarTodo extends HttpServlet {
     		dao.con = sqlDAO.createConnection();
     		//Store text
     		words_stored.add("2");
-    		dao.saveText(text);
+    		dao.saveText("Hola");
     		//Get words stored
     		words_stored.add("3");
     		words_stored = dao.getAllWords();
