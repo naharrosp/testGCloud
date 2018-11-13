@@ -39,6 +39,7 @@ public class mostrarTodo extends HttpServlet {
 		//Get the parameter
 		String text = request.getParameter("text");
 		
+		
 		try {
 	    	//Translate the parameter
 			text = translator.translate(text);
@@ -53,8 +54,6 @@ public class mostrarTodo extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-
-    	
 		
     	//Database
     	sqlDAO	dao= sqlDAO.getDao();
