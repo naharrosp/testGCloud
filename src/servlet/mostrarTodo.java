@@ -35,9 +35,9 @@ public class mostrarTodo extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-
+		
     	sqlDAO	dao= sqlDAO.getDao();
-    	ArrayList <String> words_stored=null;
+    	ArrayList <String> words_stored=new ArrayList <String> ();
     	try {
     		dao.con = sqlDAO.createConnection();
     		
@@ -62,7 +62,7 @@ public class mostrarTodo extends HttpServlet {
     	}
     		
     
-    	request.setAttribute("list", words_translated );
+    	request.setAttribute("list",  words_stored );
 
     	
     	System.out.println(request.getAttribute("list"));
