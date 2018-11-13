@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import sentiments.SentimentAnalyzer;
 import sql.sqlDAO;
 import translate.translator;
 
@@ -35,12 +36,31 @@ public class mostrarTodo extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
+		//Get the parameter
+		String text = request.getParameter("text");
 		
+    	//Translate the parameter
+		try {
+			text = translator.translate(text);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//Analize the sentiment
+		Double score = SentimentAnalyzer.analyze(text);
+    	
+		//Concatenate
+		text = text + ": " + score.toString();
+		
+    	//Database
     	sqlDAO	dao= sqlDAO.getDao();
     	ArrayList <String> words_stored=new ArrayList <String> ();
     	try {
     		dao.con = sqlDAO.createConnection();
+    		//Store text
     		
+    		//Get words stored
     		words_stored = dao.getAllWords();
     		
     	}
@@ -48,21 +68,9 @@ public class mostrarTodo extends HttpServlet {
     		System.out.println("Error");
     		e.printStackTrace();
     	}
-    	
-    	ArrayList <String> words_translated=new ArrayList <String> ();
-
-    	for(String word: words_stored) {
-			try {
-				String w = translator.translate(word);
-	    		words_translated.add(w);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-    	}
     		
     
-    	request.setAttribute("list",  words_translated );
+    	request.setAttribute("list",  words_stored );
 
     	
     	System.out.println(request.getAttribute("list"));
